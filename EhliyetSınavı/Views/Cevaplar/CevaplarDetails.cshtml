@@ -1,0 +1,79 @@
+﻿@model IEnumerable<EhliyetSınavı.Models.Sınavlar>
+@{
+    ViewBag.Title = "Ehliyet Sınavı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Sınav No: @TempData["kSınavNo"] @TempData["sıralıSınavNo"] Öğrenci Adı: @TempData["kSınavAd"] @TempData["sıralıSınavAd"]</h3>
+<h1>Sınav Detay</h1>
+@using (Html.BeginForm())
+{
+    int i = 1;
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <label>@i)</label>
+
+
+                @Html.DisplayFor(modelItem => item.Soru)
+                <br />
+
+                @if (item.userCevap == "A")
+                {
+                    @Html.RadioButton(i.ToString(), "A", isChecked: true)
+                }
+                else
+                {
+                    @Html.RadioButton(i.ToString(), "A", isChecked: false)
+                }
+                A) @Html.DisplayFor(modelItem => item.A)
+                <br />
+
+                @if (item.userCevap == "B")
+                {
+                    @Html.RadioButton(i.ToString(), "B", isChecked: true)
+                }
+                else
+                {
+                    @Html.RadioButton(i.ToString(), "B", isChecked: false)
+                }
+                B) @Html.DisplayFor(modelItem => item.B)
+                <br />
+
+                @if (item.userCevap == "C")
+                {
+                    @Html.RadioButton(i.ToString(), "C", isChecked: true)
+                }
+                else
+                {
+                    @Html.RadioButton(i.ToString(), "C", isChecked: false)
+                }
+                C) @Html.DisplayFor(modelItem => item.C)
+                <br />
+
+                @if (item.userCevap == "D")
+                {
+                    @Html.RadioButton(i.ToString(), "D", isChecked: true)
+                }
+
+                else
+                {
+                    @Html.RadioButton(i.ToString(), "D", isChecked: false)
+                }
+                D) @Html.DisplayFor(modelItem => item.D)
+                <br />
+                <br />
+               @i) Dogru Cevap: @Html.DisplayFor(modelItem => item.DCevap)
+                <br />
+
+                @i) Kullanıcı Cevabı: @Html.DisplayFor(modelItem => item.userCevap)
+                <br />
+            </td>
+        </tr>
+        <br />
+        i++;
+    }
+    <div>
+        @Html.ActionLink("Geri Dön", "Cevaplar")
+    </div>
+}

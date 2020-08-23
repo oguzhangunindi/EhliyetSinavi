@@ -1,0 +1,63 @@
+﻿@model EhliyetSınavı.Models.Cevaplar
+
+@{
+    ViewBag.Title = "CevaplarDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3>Bu Sınav Bilgilerini Silmek İstediğinizden Emin Misiniz?</h3><br /><br />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)<br /><br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dogruSayisi)<br /><br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dogruSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yanlisSayisi)<br /><br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yanlisSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sinavTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sinavTarihi)<br /><br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sinavNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sinavNo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("CevaplarDelete", "Cevaplar", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Sil" class="btn btn-default" />
+    @Html.ActionLink("Geri Dön", "Cevaplar")
+
+</div>
+    }
+</div>

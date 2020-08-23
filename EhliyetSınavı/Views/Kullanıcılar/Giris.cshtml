@@ -1,0 +1,36 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="@Url.Content("~/CSS/style.css")" type="text/css" />
+@using (Html.BeginForm("Giris", "Kullanıcılar", FormMethod.Post))
+{
+<div class="sidenav">
+    <div class="login-main-text">
+        <h1> Giriş Sayfası</h1><br>
+        <h4>Burdan Giriş Yapabilirsiniz<br> Eğer bir hesabınız yoksa kolayca hesap oluşturun</h4>
+    </div>
+</div>
+                <div class="main">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="login-form">
+                            <form>
+                                <div class="form-group">
+                                    <label>Kullanıcı Adı</label>
+                                    <input type="text" class="form-control" placeholder="User Name" name="userName">
+                                </div>
+                                <div class="form-group">
+                                    <label>Şifre</label>
+                                    <input type="password" class="form-control" placeholder="Password" name="userPassword">
+                                </div>
+                                <button type="submit" class="btn btn-success">Giriş</button>
+                                <button type="button" class="btn btn-warning">@Html.ActionLink("Kayıt Ol", "Kayit")</button><br>
+                                <h4>@TempData["hatalıGiris"]</h4>
+                                <h4>@TempData["girisYap"]</h4>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                }
+
+
+

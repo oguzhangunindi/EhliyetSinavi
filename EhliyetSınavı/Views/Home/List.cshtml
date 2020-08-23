@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EhliyetSınavı.Models.Sınavlar>
+@{
+    ViewBag.Title = "Ehliyet Sınavı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>List</h2>
+<h3>Sınav No: @Session["sıralıSinavNo"] Öğrenci Adı: @ViewData["SınavaGirecekKisi"] </h3>
+<br />
+
+@using (Html.BeginForm("List", "Home", FormMethod.Post))
+{
+    int i = 1;
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <label>@i)</label>
+
+                @Html.Hidden(item.Id.ToString())
+
+                @Html.DisplayFor(modelItem => item.Soru) <br />
+
+                @Html.RadioButton(i.ToString(), "A") A) @Html.DisplayFor(modelItem => item.A) <br />
+
+                @Html.RadioButton(i.ToString(), "B") B) @Html.DisplayFor(modelItem => item.B) <br />
+
+                @Html.RadioButton(i.ToString(), "C") C) @Html.DisplayFor(modelItem => item.C) <br />
+
+                @Html.RadioButton(i.ToString(), "D") D) @Html.DisplayFor(modelItem => item.D) <br />
+            </td>
+        </tr>
+        <br />
+        i++;
+    }
+    <input type="submit" value="Sınavı Bitir" />
+}
+
+
+

@@ -1,0 +1,47 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="@Url.Content("~/CSS/style.css")" type="text/css" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <div class="kullanıcıgöster">
+        @{
+            if (HttpContext.Current.Request.Cookies["ActiveUser"] != null)
+            {
+                string kullaniciAdi = HttpContext.Current.Request.Cookies["ActiveUser"]["userName"];
+                 
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 @kullaniciAdi
+                </a>   
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="@Url.Action("Profil","Kullanıcılar")">Hesap Ayarları</a>
+                    <a class="dropdown-item" href="@Url.Action("Cevaplar","Cevaplar")">Cevaplarım</a>
+                    <a class="dropdown-item" href="@Url.Action("Index","Home")">Sınava Gir</a>
+                    <a class="dropdown-item" href="@Url.Action("Cikis","Kullanıcılar")">Çıkış Yap</a>
+                </div>               
+            }
+            else
+            {
+                <h4>Hoşgeldiniz Ziyaretçi</h4><br />
+                <a href="@Url.Action("Giris","Kullanıcılar")"><h4>Giris Yap</h4></a>
+            }
+
+        }
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="sidenav">
+        <div class="login-main-text">
+            <h1> Sınav Seçim</h1><br/>
+            <h4>Burdan Dilediğiniz Sınavı Seçebilirsiniz<br/><br />Sınavda Yaptığınız Doğru ve Yanlışları Cevaplarım Sekmesinden Görebilirsiniz. </h4>
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <tr>
+                    <td>
+                        <h1>Sınav Listesi</h1><br /><br />
+                    </td>
+                    <td>
+                        @Html.RadioButton("1", "1") Birinci Sınav <br /><br />
+                    </td>
+                    <td>
+                        @Html.RadioButton("1", "2") İkinci Sınav <br /><br />
+                    </td>
+                    <td>
+                        @Html.RadioButton("1", "3") Karışık Sorulu Sınav <br />
+                    </td>
+                </tr>
+                <br />
+                <input type="submit" value="Sınava Gir" /> <br />
+                <br />
+                @TempData["sınavSec"] <br />
+                @TempData["girisYap"]
+            </div>
+        </div>
+    </div>
+            }

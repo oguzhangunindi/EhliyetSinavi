@@ -1,0 +1,50 @@
+﻿@model EhliyetSınavı.Models.Kullanıcılar
+<h2>Kayit</h2>
+@{
+    ViewBag.Title = "Kayit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="sidenav">
+        <div class="login-main-text">
+            <h1> Kayıt Sayfası</h1><br>
+            <h4>Burdan Sitemize Kayıt Olabilirsiniz.</h4>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Kayit Ol" class="btn btn-default" />
+                    @TempData["Basarılı"]
+                    @TempData["Hata"]
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+}
+
+

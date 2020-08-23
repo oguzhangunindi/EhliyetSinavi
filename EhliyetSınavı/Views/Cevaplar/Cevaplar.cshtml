@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EhliyetSınavı.Models.Cevaplar>
+
+@{
+    ViewBag.Title = "Cevaplar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cevaplar</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dogruSayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.yanlisSayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sinavTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sinavTuru)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sinavNo)
+        </th>
+        <th>
+            İşlemler
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dogruSayisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yanlisSayisi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinavTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinavTuru)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinavNo)
+            </td>
+            <td>
+                @Html.ActionLink("Detay", "CevaplarDetails", new { id = item.Id }) 
+                @Html.ActionLink("Sil", "CevaplarDelete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
